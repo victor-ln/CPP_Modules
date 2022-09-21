@@ -1,6 +1,7 @@
-#include "Contact.hpp"
 #include "PhoneBook.hpp"
-#include "utils.hpp"
+
+static void	help(void);
+static void unknownCmd(void);
 
 int	main(void)
 {
@@ -12,14 +13,7 @@ int	main(void)
 	std::wcout.imbue(std::locale("en_US.UTF-8"));
 	help();
 	while (!std::wcin.eof()) {
-		std::wcout << std::endl << L"Enter a command : ";
-		std::wcout << std::right << std::setfill(L'.') << std::setw(17);
-		std::wcout << L" : " << std::endl;
-		std::wcin.clear();
-		std::wcin.sync();
-		std::getline(std::wcin, userInput);
-		userInput = strtrim(userInput);
-		if (userInput.empty())
+		if (!getInput(L"Enter a command : ", userInput))
 			continue ;
 		if (!userInput.compare(L"ADD"))
 			phoneBookInstance.add();
@@ -31,4 +25,18 @@ int	main(void)
 			unknownCmd();
 		userInput.clear();
 	}
+}
+
+static void unknownCmd(void) {
+	std::wcout << L"Unknown command." << std::endl;
+	help();
+}
+
+static void	help(void) {
+	std::wcout << L"Available commands are ";
+	std::wcout << std::right << std::setfill(L'.') << std::setw(12);
+	std::wcout << L" : " << std::endl << std::endl;
+	std::wcout << L"ADD\t- Add a contact to the phone book (It can store a maximum of 8 contacts)." << std::endl;
+	std::wcout << L"SEARCH\t- Display contacts information in a table, then you can choose a specific one for more details." << std::endl;
+	std::wcout << L"EXIT\t- Exits the program (all contacts are lost)." << std::endl << std::endl;
 }

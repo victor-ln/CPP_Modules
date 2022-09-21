@@ -16,7 +16,7 @@ $(NAME):	$(OBJ_DIR) $(addprefix $(OBJ_DIR), $(OBJ))
 	$(CC) $(addprefix $(OBJ_DIR), $(OBJ)) -o $(NAME)
 
 $(OBJ_DIR)%.o:		%.cpp
-	g++ -c $< -o $@
+	$(CC) -c $< -o $@
 
 $(OBJ_DIR):
 	$(MKDIR_P) $(OBJ_DIR)

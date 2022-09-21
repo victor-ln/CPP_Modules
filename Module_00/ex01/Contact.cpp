@@ -1,4 +1,4 @@
-#include "Contact.class.hpp"
+#include "Contact.hpp"
 
 void	Contact::clearContactData(void) {
 	this->firstName.clear();

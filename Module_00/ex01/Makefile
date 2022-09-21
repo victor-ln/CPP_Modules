@@ -1,10 +1,10 @@
 NAME	=	contactsList
 
-CC		=	g++ -Wall -Wextra -Werror -O3 -std=c++98 -fsanitize=address
+CC		=	g++ -Wall -Wextra -Werror -O3 -g3 -std=c++98 -fsanitize=address
 
 SOURCE	=	main.cpp \
-			Contact.class.cpp \
-			PhoneBook.class.cpp \
+			Contact.cpp \
+			PhoneBook.cpp \
 			utils.cpp \
 
 OBJ		=	$(SOURCE:%.cpp=%.o)

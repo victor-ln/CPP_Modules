@@ -1,7 +1,7 @@
-#ifndef PHONEBOOK_CLASS_HPP
-# define PHONEBOOK_CLASS_HPP
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
-#include "Contact.class.hpp"
+#include "Contact.hpp"
 #include <iomanip>
 
 class PhoneBook {
@@ -20,8 +20,8 @@ class PhoneBook {
 
 		Contact	*getLastContact(void);
 		Contact	*getContactByIndex(int index);
-		void	getString(const char *info, std::string& to);
-		void	getNumber(const char *info, std::string& to);
+		void	getString(const wchar_t *info, std::wstring& to);
+		void	getNumber(const wchar_t *info, std::wstring& to);
 		void	displayContactInfo(void);
 		int		getContactIndexInput(void);
 };

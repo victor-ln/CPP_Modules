@@ -1,10 +1,12 @@
-#ifndef CONTACTLIST_HPP
-# define CONTACTLIST_HPP
+#ifndef UTILS_HPP
+# define UTILS_HPP
 
-#include "PhoneBook.class.hpp"
+#include "PhoneBook.hpp"
 
 void	unknownCmd(void);
 
-std::string&	strtrim(std::string& s);
+void	help(void);
+
+std::wstring&	strtrim(std::wstring& s);
 
 #endif

@@ -1,5 +1,5 @@
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
+#ifndef CONTACT_HPP_
+# define CONTACT_HPP_
 
 #include <iostream>
 
@@ -15,4 +15,4 @@ class Contact {
 		void	clearContactData(void);
 };
 
-#endif
+#endif /* CONTACT_HPP_ */

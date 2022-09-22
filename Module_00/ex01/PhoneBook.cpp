@@ -1,7 +1,8 @@
 #include "PhoneBook.hpp"
 
-#define INDEX_INPUT_MESSAGE	L"Enter an index for details "
-#define BORDER				L"_____________________________________________"
+#define UNDERLINES			L"_____________________________________________"
+#define OVERLINES			L"‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾"
+#define MIDDLELINES			L"|----------+----------+----------+----------|"
 #define PHONE_DIGITS		L"0123456789 -"
 #define DIGITS				L"0123456789"
 
@@ -18,24 +19,24 @@ void	PhoneBook::add(void) {
 	this->_getString(L"Last name ", lastContact->lastName);
 	this->_getString(L"Nickname ", lastContact->nickName);
 	this->_getString(L"Darkest secret ", lastContact->darkestSecret);
-	this->_getNumber(L"Phone Number ", lastContact->phoneNumber);
+	this->_getPhoneNumber(L"Phone Number ", lastContact->phoneNumber);
 	if (!std::wcin.eof()) {
-		std::wcout << L"Contact added successfully" << std::endl;
+		std::wcout << L"✅ Contact added successfully" << std::endl;
 		if (this->_contactsAdded < 8)
 			this->_contactsAdded++;
 	}
 }
 
 void	PhoneBook::search(void) {
-	Contact *contact;
-
 	if (!this->_contactsAdded) {
-		std::wcout << L"There's no contacts added yet" << std::endl;
+		std::wcout << L"💥 " << L"There's no contacts added yet" << std::endl;
 		return ;
 	}
-	this->_displayTableBorder();
+	this->_displayTableUnderlines();
 	this->_displayTableHead();
-	for (int index = 0; index < this->_contactsAdded; index++) {
+	Contact	*contact;
+	int		index = 0;
+	while (index < this->_contactsAdded) {
 		contact = this->_getContactByIndex(index);
 		this->_displayPipe();
 		std::wcout << std::right << index;
@@ -43,10 +44,11 @@ void	PhoneBook::search(void) {
 		this->_displayTableContent(contact->lastName);
 		this->_displayTableContent(contact->nickName);
 		this->_displayPipe();
-		std::wcout << std::setw(0);
 		std::wcout << std::endl;
+		if (++index < this->_contactsAdded)
+			this->_displayTableMiddleLines();
 	}
-	this->_displayTableBorder();
+	this->_displayTableOverlines();
 	this->_displayContactInfo();
 }
 
@@ -67,10 +69,16 @@ inline void	PhoneBook::_displayPipe(void) {
 	std::wcout << std::setfill(L' ') << std::setw(10);
 }
 
-inline void	PhoneBook::_displayTableBorder(void) {
-	static	std::wstring	border(BORDER);
+inline void	PhoneBook::_displayTableUnderlines(void) {
+	std::wcout << UNDERLINES << std::endl;
+}
 
-	std::wcout << border << std::endl;
+inline void	PhoneBook::_displayTableOverlines(void) {
+	std::wcout << OVERLINES << std::endl;
+}
+
+inline void	PhoneBook::_displayTableMiddleLines(void) {
+	std::wcout << MIDDLELINES << std::endl;
 }
 
 void	PhoneBook::_getString(const wchar_t *info, std::wstring& to) {
@@ -81,40 +89,44 @@ void	PhoneBook::_getString(const wchar_t *info, std::wstring& to) {
 		;
 }
 
-void	PhoneBook::_getNumber(const wchar_t *info, std::wstring& to) {
+void	PhoneBook::_getPhoneNumber(const wchar_t *info, std::wstring& to) {
 	std::wstring			message;
 
 	message.append(L"Enter contact ").append(info);
 	while (!std::wcin.eof() && to.empty()) {
 		if (getInput(message, to)) {
-			if (to.find_first_not_of(PHONE_DIGITS) != std::string::npos) {
-				std::wcout << L"Invalid input" << std::endl;
+			if (to.find_first_not_of(PHONE_DIGITS) != std::wstring::npos || \
+				to.find_first_of(DIGITS) == std::wstring::npos) {
+				std::wcout << L"💥 Invalid input" << std::endl;
 				to.clear();
 			}
 		}
 	}
 }
 
+inline void	PhoneBook::_leftZerosTrim(std::wstring& input) {
+	if (input.find_first_not_of(L"0") != std::wstring::npos)
+		if (input.find_first_of(L"0") < input.find_first_not_of(L"0"))
+			input.erase(0, input.find_first_not_of(L"0"));
+}
+
 int	PhoneBook::_getContactIndexInput(void) {
-	static std::wstring	message(INDEX_INPUT_MESSAGE);
 	std::wstring		input;
 	int					index;
 
 	index = 0;
 	while (!std::wcin.eof() && input.empty()) {
-		if (!getInput(message, input))
+		if (!getInput(L"Enter an index for details ", input))
 			continue ;
-		if (input.find_first_not_of(DIGITS) != std::string::npos) {
-			std::wcout << "Invalid input" << std::endl;
+		if (input.find_first_not_of(DIGITS) != std::wstring::npos) {
+			std::wcout << L"💥 Invalid input" << std::endl;
 			input.clear();
 			continue ;
 		}
-		if (input.find_first_of(L"0") < input.find_first_not_of(L"0") && \
-			input.find_first_not_of(L"0") != std::wstring::npos)
-			input.erase(0, input.find_first_not_of(L"0"));
+		this->_leftZerosTrim(input);
 		index = atoi((char *)input.c_str());
 		if (index < 0 || index >= this->_contactsAdded) {
-			std::wcout << "Invalid input, index out of range" << std::endl;
+			std::wcout << L"💥 Invalid input, index out of range" << std::endl;
 			input.clear();
 		}
 	}
@@ -128,6 +140,7 @@ void	PhoneBook::_displayTableHead(void) {
 	this->_displayTableContent(L"Nickname");
 	this->_displayPipe();
 	std::wcout << std::endl;
+	this->_displayTableMiddleLines();
 }
 
 void	PhoneBook::_displayTableContent(std::wstring s) {

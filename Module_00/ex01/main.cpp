@@ -19,8 +19,10 @@ int	main(void)
 			phoneBookInstance.add();
 		else if (!userInput.compare(L"SEARCH"))
 			phoneBookInstance.search();
-		else if (!userInput.compare(L"EXIT"))
+		else if (!userInput.compare(L"EXIT")) {
+			std::wcout << L"Goodbye! 👋" << std::endl;
 			break ;
+		}
 		else if (!std::wcin.eof())
 			unknownCmd();
 		userInput.clear();
@@ -28,7 +30,7 @@ int	main(void)
 }
 
 static void unknownCmd(void) {
-	std::wcout << L"Unknown command." << std::endl;
+	std::wcout << L"💥 Unknown command." << std::endl;
 	help();
 }
 

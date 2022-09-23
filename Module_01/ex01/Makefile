@@ -1,6 +1,6 @@
 NAME	=	program
 
-CC		=	g++ -Wall -Wextra -Werror -O3 -std=c++98 -fsanitize=address
+CC		=	c++ -Wall -Wextra -Werror -O3 -std=c++98 -fsanitize=address
 
 SOURCE	=	main.cpp \
 			zombieHorde.cpp \

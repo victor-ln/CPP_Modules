@@ -3,21 +3,26 @@
 
 #include <fstream>
 #include <iostream>
+#include <cstdlib>
 
 class Sed
 {
 	private:
 		std::string		_fileName;
 		std::string		_replaceFileName;
-		std::string		_strToFind;
-		std::string		_replacement;
-		std::ifstream	_fileToRead;
-		std::ofstream	_fileToWrite;
+		std::wstring	_strToFind;
+		std::wstring	_replacement;
+		std::wifstream	_fileToRead;
+		std::wofstream	_fileToWrite;
+		bool			_strMatched;
 
-		bool	_openFile(void);
-		bool	_createFileToWrite(void);
-		bool	_initFiles(void);
-		void	_replace(std::size_t pos, std::string& buffer);
+		bool			_openFile(void);
+		bool			_createFileToWrite(void);
+		bool			_initFiles(void);
+		void			_writeInNewFile(std::wstring);
+		std::wstring	_readFromFile(void);
+		void			_replace(std::size_t pos, std::wstring& buffer);
+		void			_convertCharToUnicode(const char *str, std::wstring& to);
 
 	public:
 		Sed(char *, char *, char *);

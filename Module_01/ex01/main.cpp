@@ -15,8 +15,8 @@ int	main(void) {
 			std::cout << "Invalid input" << std::endl;
 	}
 	zombies = zombieHorde(numberOfZombies, zombieName);
-	if (zombies == nullptr)
-		return (errno);
+	if (zombies == NULL)
+		return (1);
 	for (int i = 0; i < numberOfZombies; i++)
 		zombies[i].announce();
 	delete [] zombies;

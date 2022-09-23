@@ -1,9 +1,9 @@
 NAME	=	program
 
-CC		=	c++ -Wall -Wextra -Werror -O3 -std=c++98 -g3
+CC		=	c++ -Wall -Wextra -Werror -O3 -std=c++98
 
 SOURCE	=	main.cpp \
-			Sed.cpp \
+			Harl.cpp \
 
 OBJ		=	$(SOURCE:%.cpp=%.o)
 

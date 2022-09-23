@@ -1,6 +1,6 @@
 NAME	=	megaphone
 
-CC		=	g++ -Wall -Wextra -Werror -O3 -std=c++98
+CC		=	c++ -Wall -Wextra -Werror -O3 -std=c++98
 
 SOURCE	=	megaphone.cpp \
 

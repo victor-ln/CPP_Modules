@@ -1,6 +1,6 @@
 NAME	=	program
 
-CC		=	g++ -Wall -Wextra -Werror -O3 -std=c++98
+CC		=	c++ -Wall -Wextra -Werror -O3 -std=c++98
 
 SOURCE	=	Account.cpp \
 			tests.cpp \
@@ -17,7 +17,7 @@ $(NAME):	$(OBJ_DIR) $(addprefix $(OBJ_DIR), $(OBJ))
 	$(CC) $(addprefix $(OBJ_DIR), $(OBJ)) -o $(NAME)
 
 $(OBJ_DIR)%.o:		%.cpp
-	g++ -c $< -o $@
+	$(CC) -c $< -o $@
 
 $(OBJ_DIR):
 	$(MKDIR_P) $(OBJ_DIR)

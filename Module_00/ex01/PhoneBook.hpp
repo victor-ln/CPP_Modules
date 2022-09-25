@@ -23,8 +23,8 @@ class PhoneBook {
 
 		Contact	*_getLastContact(void);
 		Contact	*_getContactByIndex(int index);
-		void	_getString(const wchar_t *info, std::wstring& to);
-		void	_getPhoneNumber(const wchar_t *info, std::wstring& to);
+		void	_getString(std::wstring message, std::wstring& to);
+		void	_getPhoneNumber(std::wstring message, std::wstring& to);
 		void	_displayContactInfo(void);
 		int		_getContactIndexInput(void);
 		void	_leftZerosTrim(std::wstring& input);

@@ -27,6 +27,7 @@ int	main(void)
 			unknownCmd();
 		userInput.clear();
 	}
+	return (0);
 }
 
 static void unknownCmd(void) {

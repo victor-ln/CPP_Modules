@@ -28,6 +28,7 @@ class PhoneBook {
 		void	_displayContactInfo(void);
 		int		_getContactIndexInput(void);
 		void	_leftZerosTrim(std::wstring& input);
+		int		_convertStrIndexToIntIndex(std::wstring input);
 		void	_displayPipe(void);
 		void	_displayTableUnderlines(void);
 		void	_displayTableOverlines(void);

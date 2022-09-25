@@ -102,6 +102,18 @@ inline void	PhoneBook::_leftZerosTrim(std::wstring& input) {
 			input.erase(0, input.find_first_not_of(L"0"));
 }
 
+int	PhoneBook::_convertStrIndexToIntIndex(std::wstring input) {
+	char	tmp[input.length() + 1];
+	size_t	i = 0;
+
+	while (i < input.length()) {
+		tmp[i] = (char)input.at(i);
+		i++;
+	}
+	tmp[i] = 0;
+	return (atoi(tmp));
+}
+
 int	PhoneBook::_getContactIndexInput(void) {
 	std::wstring		input;
 	int					index = 0;
@@ -115,7 +127,7 @@ int	PhoneBook::_getContactIndexInput(void) {
 			continue ;
 		}
 		this->_leftZerosTrim(input);
-		index = atoi((char *)input.c_str());
+		index = this->_convertStrIndexToIntIndex(input);
 		if (index < 0 || index >= this->_contactsAdded) {
 			std::wcout << L"💥 Invalid input, index out of range" << std::endl;
 			input.clear();

@@ -1,19 +1,23 @@
 #include "Zombie.hpp"
+#include <cstdlib>
 
 int	main(void) {
 	Zombie*			zombies;
 	std::string		zombieName;
-	int				numberOfZombies;
+	std::string		zombieQt;
+	int				numberOfZombies = 0;
 
 	std::cout << "Enter the zombie name: " << std::endl;
-	std::cin >> zombieName;
-	numberOfZombies = 0;
-	while (numberOfZombies <= 0) {
-		std::cout << "Enter the number of Zombies: " << std::endl;
-		std::cin >> numberOfZombies;
-		if (numberOfZombies <= 0)
-			std::cout << "Invalid input" << std::endl;
+	while (zombieName.empty() && !std::cin.eof()) {
+		std::cin.clear();
+		std::getline(std::cin, zombieName);
 	}
+	if (std::cin.eof())
+		zombieName = "Foo";
+	std::cout << "Enter the number of Zombies: " << std::endl;
+	std::getline(std::cin, zombieQt);
+	if (!std::cin.eof())
+		numberOfZombies = atoi(zombieQt.c_str());
 	zombies = zombieHorde(numberOfZombies, zombieName);
 	if (zombies == NULL)
 		return (1);

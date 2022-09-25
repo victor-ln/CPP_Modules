@@ -2,18 +2,8 @@
 
 Sed::Sed(char *fileToRead, char *strToFind, char *replacement) {
 	this->_fileName = fileToRead;
-	this->_convertCharToUnicode(strToFind, this->_strToFind);
-	this->_convertCharToUnicode(replacement, this->_replacement);
-}
-
-void Sed::_convertCharToUnicode(const char *str, std::wstring& to) {
-	std::string		buff(str);
-	wchar_t			*wBuff;
-
-	wBuff = new wchar_t[buff.length()];
-	std::mbstowcs(wBuff, buff.c_str(), buff.length());
-	to = wBuff;
-	delete [] wBuff;
+	this->_strToFind = strToFind;
+	this->_replacement = replacement;
 }
 
 inline bool	Sed::_openFile(void) {
@@ -27,22 +17,22 @@ inline bool	Sed::_createFileToWrite(void) {
 	return (this->_fileToWrite.is_open());
 }
 
-inline void	Sed::_replace(std::size_t pos, std::wstring& buffer) {
+inline void	Sed::_replace(std::size_t pos, std::string& buffer) {
 	buffer = buffer.substr(0, pos) + this->_replacement + buffer.substr(pos + this->_strToFind.length());
 }
 
-std::wstring	Sed::_readFromFile(void) {
-	std::wstring		readBuffer;
-	std::wstring		buffer;
-	std::size_t			pos;
-	std::size_t			aux;
+std::string	Sed::_readFromFile(void) {
+	std::string		readBuffer;
+	std::string		buffer;
+	std::size_t		pos;
+	std::size_t		lastPos;
 
 	while (std::getline(this->_fileToRead, readBuffer)) {
-		aux = 0;
-		while ((pos = readBuffer.find(this->_strToFind)) != std::wstring::npos && pos >= aux) {
+		lastPos = 0;
+		while ((pos = readBuffer.find(this->_strToFind)) != std::string::npos && pos >= lastPos) {
 			this->_strMatched = true;
 			this->_replace(pos, readBuffer);
-			aux = pos + this->_strToFind.length();
+			lastPos = pos + this->_strToFind.length();
 		}
 		if (!this->_fileToRead.eof())
 			readBuffer += '\n';
@@ -52,7 +42,7 @@ std::wstring	Sed::_readFromFile(void) {
 	return (buffer);
 }
 
-void	Sed::_writeInNewFile(std::wstring buffer) {
+void	Sed::_writeInNewFile(std::string buffer) {
 	if (!this->_createFileToWrite()) {
 		std::cout << "Could not create file to write" << std::endl;
 		return ;
@@ -66,7 +56,9 @@ void	Sed::execute(void) {
 		std::cout << "Could not open file to read" << std::endl;
 		return ;
 	}
-	std::wstring	buffer = this->_readFromFile();
+	std::string	buffer = this->_readFromFile();
 	if (this->_strMatched)
 		this->_writeInNewFile(buffer);
+	else
+		std::cout << "There's no matches" << std::endl;
 }

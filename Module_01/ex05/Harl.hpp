@@ -6,7 +6,7 @@
 class Harl
 {
 	private:
-		std::string	funcNames[5];
+		std::string	funcNames[4];
 		void	(Harl::*func[4])(void) const;
 
 		void	debug(void) const;

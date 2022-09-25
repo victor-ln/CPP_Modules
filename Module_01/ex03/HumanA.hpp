@@ -11,10 +11,12 @@ class HumanA
 
 	public:
 		HumanA(std::string, Weapon&);
+		HumanA(std::string, Weapon*);
 		~HumanA();
 
 		void	attack(void) const;
 		void	setWeapon(Weapon&);
+		void	setWeapon(Weapon*);
 };
 
 #endif

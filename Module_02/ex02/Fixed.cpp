@@ -15,9 +15,9 @@ Fixed::Fixed(float nb) {
 	this->_fixedNbValue = nb * (1 << this->_fractionalBitNb) + (nb >= 0 ? 0.5 : -0.5);
 }
 
-Fixed::Fixed(const Fixed& src) {
+Fixed::Fixed(const Fixed& rightHandSide) {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = src;
+	*this = rightHandSide;
 }
 
 Fixed::~Fixed() {
@@ -42,9 +42,10 @@ int		Fixed::toInt(void) const {
 	return (this->_fixedNbValue >> this->_fractionalBitNb);
 }
 
-void	Fixed::operator=(const Fixed& src) {
+Fixed&	Fixed::operator=(const Fixed& rightHandSide) {
 	std::cout << "Copy assignment operator called" << std::endl;
-	this->_fixedNbValue = src.getRawBits();
+	this->_fixedNbValue = rightHandSide.getRawBits();
+	return (*this);
 }
 
 std::ostream&	operator<<(std::ostream& out, const Fixed& c) {

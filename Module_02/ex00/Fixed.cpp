@@ -5,9 +5,9 @@ Fixed::Fixed() {
 	this->_fixedNbValue = 0;
 }
 
-Fixed::Fixed(const Fixed& src) {
+Fixed::Fixed(const Fixed& rightHandSide) {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = src;
+	*this = rightHandSide;
 }
 
 Fixed::~Fixed() {
@@ -24,9 +24,10 @@ void	Fixed::setRawBits(int const raw) {
 	this->_fixedNbValue = raw;
 }
 
-void	Fixed::operator=(const Fixed& src) {
+Fixed&	Fixed::operator=(const Fixed& rightHandSide) {
 	std::cout << "Copy assignment operator called" << std::endl;
-	this->_fixedNbValue = src.getRawBits();
+	this->_fixedNbValue = rightHandSide.getRawBits();
+	return (*this);
 }
 
 const int Fixed::_fractionalBitNb = 8;

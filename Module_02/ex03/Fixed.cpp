@@ -42,9 +42,10 @@ int		Fixed::toInt(void) const {
 	return (this->_fixedNbValue >> this->_fractionalBitNb);
 }
 
-void	Fixed::operator=(const Fixed& src) {
+Fixed&	Fixed::operator=(const Fixed& rightHandSide) {
 	std::cout << "Copy assignment operator called" << std::endl;
-	this->_fixedNbValue = src.getRawBits();
+	this->_fixedNbValue = rightHandSide.getRawBits();
+	return (*this);
 }
 
 std::ostream&	operator<<(std::ostream& out, const Fixed& c) {

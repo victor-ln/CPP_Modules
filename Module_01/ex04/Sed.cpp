@@ -32,7 +32,7 @@ std::string	Sed::_readFromFile(void) {
 		while ((pos = readBuffer.find(this->_strToFind)) != std::string::npos && pos >= lastPos) {
 			this->_strMatched = true;
 			this->_replace(pos, readBuffer);
-			lastPos = pos + this->_strToFind.length();
+			lastPos = pos + this->_replacement.length();
 		}
 		if (!this->_fileToRead.eof())
 			readBuffer += '\n';

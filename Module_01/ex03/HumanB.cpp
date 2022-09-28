@@ -4,7 +4,7 @@ HumanB::HumanB(std::string name) {
 	this->_name = name;
 }
 
-HumanB::~HumanB() {
+HumanB::~HumanB(void) {
 	return ;
 }
 

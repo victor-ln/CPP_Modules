@@ -4,7 +4,7 @@ Zombie::Zombie(std::string name) : _name(name) {
 	return ;
 }
 
-Zombie::~Zombie() {
+Zombie::~Zombie(void) {
 	std::cout << "Destructor called, Zombie name is: " << this->_name << std::endl;
 }
 

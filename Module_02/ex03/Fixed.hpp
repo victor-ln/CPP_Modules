@@ -11,11 +11,11 @@ class Fixed {
 		static const int	_fractionalBitNb;
 
 	public:
-		Fixed();
+		Fixed(void);
 		Fixed(int);
 		Fixed(float);
 		Fixed(const Fixed&);
-		~Fixed();
+		~Fixed(void);
 
 		Fixed&	operator=(const Fixed&);
 

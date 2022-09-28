@@ -10,7 +10,7 @@ HumanA::HumanA(std::string name, Weapon* type) {
 	this->_weapon = type;
 }
 
-HumanA::~HumanA() {
+HumanA::~HumanA(void) {
 	return ;
 }
 

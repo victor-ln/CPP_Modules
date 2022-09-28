@@ -21,7 +21,7 @@ Point&	Point::operator=(const Point& src) {
 	return (*this);
 }
 
-Point::~Point() {
+Point::~Point(void) {
 	std::cout << "Destructor called" << std::endl;
 }
 

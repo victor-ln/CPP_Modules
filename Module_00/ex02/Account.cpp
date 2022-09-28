@@ -13,7 +13,7 @@ Account::Account(int initial_deposit) : _amount(initial_deposit) {
 	this->_nbAccounts++;
 }
 
-Account::~Account() {
+Account::~Account(void) {
 	this->_displayTimestamp();
 	std::cout << "index:" << this->_accountIndex << ";";
 	Account::_nbAccounts--;

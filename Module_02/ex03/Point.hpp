@@ -13,7 +13,7 @@ class Point {
 		Point(void);
 		Point(float, float);
 		Point(const Point&);
-		~Point();
+		~Point(void);
 
 		Point&			operator=(const Point&);
 		float			getXValue(void) const;

@@ -1,6 +1,6 @@
 #include "Fixed.hpp"
 
-Fixed::Fixed() {
+Fixed::Fixed(void) {
 	std::cout << "Default constructor called" << std::endl;
 	this->_fixedNbValue = 0;
 }
@@ -10,7 +10,7 @@ Fixed::Fixed(const Fixed& rightHandSide) {
 	*this = rightHandSide;
 }
 
-Fixed::~Fixed() {
+Fixed::~Fixed(void) {
 	std::cout << "Destructor called" << std::endl;
 }
 

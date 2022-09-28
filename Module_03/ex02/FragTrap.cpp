@@ -1,6 +1,6 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(void) : ClapTrap(void) {
+FragTrap::FragTrap(void) : ClapTrap() {
 	std::cout << "FragTrap: Default Constructor called" << std::endl;
 }
 
@@ -29,5 +29,5 @@ FragTrap&   FragTrap::operator=(const FragTrap& rightHandSide) {
 }
 
 void	FragTrap::highFivesGuys(void) {
-	std::cout << "✋" << std::endl;
+	std::cout << "Give me five ✋" << std::endl;
 }

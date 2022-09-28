@@ -1,6 +1,8 @@
 #if !defined(SCAVTRAP_HPP_)
 #define SCAVTRAP_HPP_
 
+#include <iostream>
+
 #include "ClapTrap.hpp"
 
 class ScavTrap : public ClapTrap {

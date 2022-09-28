@@ -1,6 +1,8 @@
 #if !defined(POINT_HPP_)
 #define POINT_HPP_
 
+#include <iostream>
+
 #include "Fixed.hpp"
 
 class Point {

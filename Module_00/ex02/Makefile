@@ -1,22 +1,23 @@
 NAME	=	program
 
+MKDIR_P	=	mkdir -p
 CC		=	c++ -Wall -Wextra -Werror -O3 -std=c++98
 
-SOURCE	=	Account.cpp \
+FILES	=	Account.cpp \
 			tests.cpp \
 
-OBJ		=	$(SOURCE:%.cpp=%.o)
+SRC_DIR	=	sources/
+OBJ_DIR	=	objects/
 
-OBJ_DIR	=	obj/
-
-MKDIR_P	=	mkdir -p
+SRC		=	$(addprefix $(SRC_DIR), $(FILES))
+OBJ		=	$(addprefix $(OBJ_DIR), $(FILES:%.cpp=%.o))
 
 all:		$(NAME)
 
-$(NAME):	$(OBJ_DIR) $(addprefix $(OBJ_DIR), $(OBJ))
-	$(CC) $(addprefix $(OBJ_DIR), $(OBJ)) -o $(NAME)
+$(NAME):	$(OBJ_DIR) $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
 
-$(OBJ_DIR)%.o:		%.cpp
+$(OBJ_DIR)%.o:		$(SRC_DIR)%.cpp
 	$(CC) -c $< -o $@
 
 $(OBJ_DIR):

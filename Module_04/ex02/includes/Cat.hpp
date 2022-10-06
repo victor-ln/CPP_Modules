@@ -6,19 +6,19 @@
 #include <iostream>
 #include <string>
 
-#include "./AbstractAnimal.hpp"
+#include "./AAnimal.hpp"
 #include "./Brain.hpp"
 
-class Cat : public AbstractAnimal {
+class Cat : public AAnimal {
  public:
-    Cat();
+    Cat(void);
     Cat(const Cat&);
-    ~Cat();
+    ~Cat(void);
 
     Cat& operator=(const Cat&);
     void makeSound(void) const;
     void removeIdea(const size_t);
-    void showIdeas() const;
+    void showIdeas(void) const;
     void newIdea(const std::string&);
 
  private:

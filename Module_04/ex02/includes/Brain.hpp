@@ -8,14 +8,14 @@
 
 class Brain {
  public:
-    Brain();
+    Brain(void);
     Brain(const Brain&);
-    ~Brain();
+    ~Brain(void);
 
     Brain&          operator=(const Brain&);
 
     void    removeIdea(const size_t);
-    void    showIdeas() const;
+    void    showIdeas(void) const;
     void    newIdea(const std::string&);
 
  private:

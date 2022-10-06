@@ -4,7 +4,7 @@
 
 Brain::Brain(void) {
     std::cout << "Brain: Default constructor called" << std::endl;
-    this->_lastIdea = 0;
+    _lastIdea = 0;
 }
 
 Brain::Brain(const Brain& rhs) {
@@ -12,30 +12,36 @@ Brain::Brain(const Brain& rhs) {
     *this = rhs;
 }
 
-Brain::~Brain() {
+Brain::~Brain(void) {
     std::cout << "Brain: Destructor called" << std::endl;
 }
 
 Brain&  Brain::operator=(const Brain& rhs) {
-    std::cout << "Brain: Copy assignment operator called" << std::endl;
-    for (int i = 0; rhs._ideas[i].length(); ++i) {
-        this->_ideas[i] = rhs._ideas[i];
+    int i = 0;
+
+    while (rhs._ideas[i].length()) {
+        _ideas[i] = rhs._ideas[i];
+        ++i;
+    }
+    while (i < 100) {
+        _ideas[i].clear();
+        ++i;
     }
     return (*this);
 }
 
-void Brain::showIdeas() const {
-    for (int i = 0; this->_ideas[i].length(); ++i) {
-        std::cout << this->_ideas[i] << std::endl;
+void Brain::showIdeas(void) const {
+    for (int i = 0; _ideas[i].length(); ++i) {
+        std::cout << _ideas[i] << std::endl;
     }
 }
 
 void  Brain::newIdea(const std::string& idea) {
-    if (this->_lastIdea == 100) {
-        this->_lastIdea = 0;
+    if (_lastIdea == 100) {
+        _lastIdea = 0;
     }
-    this->_ideas[this->_lastIdea] = idea;
-    ++this->_lastIdea;
+    _ideas[_lastIdea] = idea;
+    ++_lastIdea;
 }
 
 void  Brain::removeIdea(const size_t i) {
@@ -43,5 +49,5 @@ void  Brain::removeIdea(const size_t i) {
         std::cout << "Invalid index, the range of ideas is 0 to 99\n";
         return;
     }
-    this->_ideas[i].clear();
+    _ideas[i].clear();
 }

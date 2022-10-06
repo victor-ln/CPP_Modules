@@ -1,19 +1,23 @@
 NAME	=	program
 
-MKDIR_P	=	mkdir -p
 CC		=	c++ -Wall -Wextra -Werror -O3 -std=c++98 -fsanitize=address
 
 FILES	=	main.cpp \
-			AAnimal.cpp \
-			Brain.cpp \
-			Cat.cpp \
-			Dog.cpp \
+			AMateria.cpp \
+			Cure.cpp \
+			Ice.cpp \
+			Character.cpp \
+			MateriaSource.cpp \
+			Dump.cpp \
 
 SRC_DIR	=	sources/
 OBJ_DIR	=	objects/
 
 SRC		=	$(addprefix $(SRC_DIR), $(FILES))
 OBJ		=	$(addprefix $(OBJ_DIR), $(FILES:%.cpp=%.o))
+
+
+MKDIR_P	=	mkdir -p
 
 all:		$(NAME)
 

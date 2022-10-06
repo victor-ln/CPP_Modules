@@ -11,14 +11,14 @@
 
 class Dog : public Animal {
  public:
-    Dog();
+    Dog(void);
     Dog(const Dog&);
-    ~Dog();
+    ~Dog(void);
 
     Dog& operator=(const Dog&);
     void makeSound(void) const;
     void removeIdea(const size_t);
-    void showIdeas() const;
+    void showIdeas(void) const;
     void newIdea(const std::string&);
 
  private:

@@ -13,17 +13,17 @@
 
 class Animal {
  public:
-    Animal();
+    Animal(void);
     Animal(const Animal&);
     virtual ~Animal(void);
 
     Animal&            operator=(const Animal&);
 
     std::string        getType(void) const;
-    virtual void    makeSound(void) const;
+    virtual void       makeSound(void) const;
 
  protected:
-    std::string type;
+    std::string _type;
 };
 
 #endif /* MODULE_04_EX01_INCLUDES_ANIMAL_HPP_ */

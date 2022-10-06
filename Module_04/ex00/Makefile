@@ -5,8 +5,10 @@ CC		=	c++ -Wall -Wextra -Werror -O3 -std=c++98 -fsanitize=address
 
 FILES	=	main.cpp \
 			Animal.cpp \
-			Dog.cpp \
 			Cat.cpp \
+			Dog.cpp \
+			WrongAnimal.cpp \
+			WrongCat.cpp \
 
 SRC_DIR	=	sources/
 OBJ_DIR	=	objects/

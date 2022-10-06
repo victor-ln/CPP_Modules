@@ -26,7 +26,7 @@ Cat& Cat::operator=(const Cat& rhs) {
 }
 
 void    Cat::makeSound(void) const {
-    std::cout << "Cat: meooooooowwww" << std::endl;
+    std::cout << _type << ": meooooooowwww" << std::endl;
 }
 
 void Cat::showIdeas(void) const {

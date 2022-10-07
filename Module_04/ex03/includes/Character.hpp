@@ -19,7 +19,6 @@ class Character : public ICharacter {
 
     Character&  operator=(const Character&);
 
-    AMateria*  getMateriaAddress(int idx);
     const std::string& getName(void) const;
     void equip(AMateria* m);
     void unequip(int idx);

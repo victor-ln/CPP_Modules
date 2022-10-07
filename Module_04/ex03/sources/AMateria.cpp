@@ -2,13 +2,12 @@
 
 #include "../includes/AMateria.hpp"
 
-AMateria::AMateria(const std::string& type) {
-    std::cout << "AMateria: string constructor called" << std::endl;
-    _type = type;
+AMateria::AMateria(void) : _type("AMateria") {
+    std::cout << "AMateria: Default constructor called" << std::endl;
 }
 
-AMateria::AMateria(void) : _type("aMateria") {
-    std::cout << "AMateria: Default constructor called" << std::endl;
+AMateria::AMateria(const std::string& type) : _type(type) {
+    std::cout << "AMateria: string constructor called" << std::endl;
 }
 
 AMateria::AMateria(const AMateria& rhs) {
@@ -21,7 +20,8 @@ AMateria::~AMateria(void) {
 }
 
 AMateria& AMateria::operator=(const AMateria& rhs) {
-    (void)rhs;
+    std::cout << "AMateria: Copy assingment operator called" << std::endl;
+    _type = rhs._type;
     return (*this);
 }
 

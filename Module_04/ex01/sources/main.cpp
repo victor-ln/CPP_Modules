@@ -29,8 +29,11 @@ int main(void) {
     dog2.showIdeas();
     std::cout << "\nCopying Dog2 into Dog1:\n\n";
     dog1 = dog2;
+    Dog dog3 = dog2;
     std::cout << "\nDog1 Ideas:\n\n";
     dog1.showIdeas();
+    std::cout << "\nDog3 Ideas:\n\n";
+    dog3.showIdeas();
     for (i = 0; i < 10; ++i)
         animals[i]->makeSound();
     for (i = 0; i < 10; ++i)

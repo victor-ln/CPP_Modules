@@ -12,8 +12,7 @@
 class Cure : public AMateria {
  public:
     Cure(void);
-    Cure(const AMateria&);
-    explicit Cure(const std::string&);
+    Cure(const Cure&);
     ~Cure(void);
 
     Cure&       operator=(const Cure&);

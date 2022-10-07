@@ -2,17 +2,15 @@
 
 #include "../includes/Ice.hpp"
 
-Ice::Ice(void) : AMateria() {
+/**
+ * It calls the default constructor of the parent class, then sets the type of the
+ * object to "ice"
+ */
+Ice::Ice(void) : AMateria("ice") {
     std::cout << "Ice: Default constructor called" << std::endl;
-    _type = std::string("ice");
 }
 
-Ice::Ice(const std::string& type) : AMateria(type) {
-    std::cout << "Ice: Copy constructor called" << std::endl;
-    _type = std::string("cure");
-}
-
-Ice::Ice(const AMateria& rhs) : AMateria(rhs) {
+Ice::Ice(const Ice& rhs) : AMateria(rhs) {
     std::cout << "Ice: Copy constructor called" << std::endl;
     *this = rhs;
 }
@@ -22,10 +20,17 @@ Ice::~Ice(void) {
 }
 
 Ice&   Ice::operator=(const AMateria& rhs) {
+    std::cout << "Ice: Copy assingment operator called" << std::endl;
     (void)rhs;
     return (*this);
 }
 
+/**
+ * The clone() function returns a pointer to a new Ice object that is a copy of the
+ * current object.
+ * 
+ * @return A new instance of Ice.
+ */
 Ice* Ice::clone(void) const {
     return (new Ice());
 }

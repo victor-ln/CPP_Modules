@@ -12,8 +12,7 @@
 class Ice : public AMateria {
  public:
     Ice(void);
-    Ice(const AMateria&);
-    explicit Ice(const std::string&);
+    Ice(const Ice&);
     ~Ice(void);
 
     Ice&        operator=(const AMateria&);

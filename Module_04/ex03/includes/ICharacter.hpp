@@ -18,7 +18,6 @@ class ICharacter {
     virtual void equip(AMateria* m) = 0;
     virtual void unequip(int idx) = 0;
     virtual void use(int idx, const ICharacter& target) = 0;
-    virtual AMateria*  getMateriaAddress(int idx) = 0;
 };
 
 #endif /* MODULE_04_EX03_INCLUDES_ICHARACTER_HPP_ */

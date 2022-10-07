@@ -10,6 +10,10 @@ Dump::Dump(const Dump& src) {
     *this = src;
 }
 
+/**
+ * The destructor deletes all the nodes in the linked list, and then sets the head
+ * pointer to zero
+ */
 Dump::~Dump(void) {
     std::cout << "Dump: Destructor called" << std::endl;
     Node    *next = 0;
@@ -28,6 +32,12 @@ Dump    Dump::operator=(const Dump& rhs) {
     return (*this);
 }
 
+/**
+ * It creates a new node, sets the data to the given AMateria, sets the next to the
+ * current head, and sets the head to the new node
+ * 
+ * @param m The AMateria object to be pushed onto the stack.
+ */
 void Dump::push(AMateria *m) {
     Node    *newNode = new Node;
 

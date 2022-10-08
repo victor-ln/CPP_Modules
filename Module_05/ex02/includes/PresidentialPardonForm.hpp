@@ -3,6 +3,9 @@
 #ifndef MODULE_05_EX03_INCLUDES_PRESIDENTIALPARDONFORM_HPP_
 #define MODULE_05_EX03_INCLUDES_PRESIDENTIALPARDONFORM_HPP_
 
+#include <iostream>
+#include <string>
+
 #include "./Form.hpp"
 
 class PresidentialPardonForm : public Form {

@@ -12,9 +12,8 @@ ShrubberyCreationForm::ShrubberyCreationForm(void) :
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) :
-        Form("Shrubbery Creation Form", 145, 137) {
+        Form("Shrubbery Creation Form", 145, 137), _target(target) {
     std::cout << "ShrubberyForm: Target Constructor called" << std::endl;
-    _target = target + "_shrubbery";
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& rhs) :
@@ -36,13 +35,21 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(
     return (*this);
 }
 
+/**
+ * If the form is signed and the bureaucrat's grade is high enough,
+ * it opens a file with the name of the target, 
+ * appends the tree ASCII art to it, and closes the file.
+ * 
+ * @param b the bureaucrat that is executing the form
+ */
 void    ShrubberyCreationForm::execute(const Bureaucrat& b) const {
     if (!this->isFormSigned())
         throw GradeTooLowException(EXCEPTION_SIGN_MSG);
     if (b.getGrade() > this->getGradeToExecute())
         throw GradeTooLowException(b.getName() + EXCEPTION_EXEC_MSG);
-    std::ofstream    shrubberyFile;
-    shrubberyFile.open(_target.c_str(), std::ios::out | std::ios::app);
+    std::ofstream   shrubberyFile;
+    std::string     filename = _target + "_shrubbery";
+    shrubberyFile.open(filename.c_str(), std::ios::out | std::ios::app);
     shrubberyFile << TREE;
     shrubberyFile.close();
     std::cout << b.getName() << " executed " << this->getName() << std::endl;

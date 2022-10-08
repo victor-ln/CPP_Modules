@@ -35,6 +35,12 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(
     return (*this);
 }
 
+/**
+ * If the form is signed and the bureaucrat's grade is high enough, the bureaucrat
+ * executes the form and prints a success message
+ * 
+ * @param b The bureaucrat that is executing the form.
+ */
 void    RobotomyRequestForm::execute(const Bureaucrat& b) const {
     if (!this->isFormSigned())
         throw GradeTooLowException(EXCEPTION_SIGN_MSG);

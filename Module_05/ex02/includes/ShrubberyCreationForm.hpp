@@ -3,7 +3,7 @@
 #ifndef MODULE_05_EX03_INCLUDES_SHRUBBERYCREATIONFORM_HPP_
 #define MODULE_05_EX03_INCLUDES_SHRUBBERYCREATIONFORM_HPP_
 
-#define TREE   "                     . . .\n\
+#define TREE   "\n                     . . .\n\
                    .        .  .     ..    .\n\
                 .                 .         .  .\n\
                                 .\n\
@@ -26,6 +26,8 @@
                            .::(@:."
 
 #include <fstream>
+#include <iostream>
+#include <string>
 
 #include "./Form.hpp"
 

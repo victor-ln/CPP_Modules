@@ -16,7 +16,7 @@ class Form {
     Form(void);
     Form(const std::string& name, const int gToSign, const int gToExecute);
     Form(const Form&);
-    ~Form(void);
+    virtual ~Form(void);
 
     Form&   operator=(const Form&);
 

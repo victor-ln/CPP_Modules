@@ -9,12 +9,26 @@ Form::Form(void) : _name("Default"), _gradeToSign(100), _gradeToExecute(100) {
     this->_isFormSigned = false;
 }
 
+/**
+ * It's a constructor that takes three parameters,
+ * and initializes the attributes of the class with them
+ * 
+ * @param name the name of the form
+ * @param gradeSign The grade required to sign the form.
+ * @param gradeExec The grade required to execute the form.
+ */
 Form::Form(const std::string& name, const int gradeSign, const int gradeExec) :
         _name(name), _gradeToSign(gradeSign), _gradeToExecute(gradeExec) {
     std::cout << "Form: Params constructor called" << std::endl;
     this->_isFormSigned = false;
 }
 
+/**
+ * Copy constructor called when a new object is created from an existing object,
+ * as a copy of the existing object.
+ * 
+ * @param src The Form object to copy.
+ */
 Form::Form(const Form& src) : _name(src._name), _gradeToSign(src._gradeToSign),
         _gradeToExecute(src._gradeToExecute), _isFormSigned(src._isFormSigned) {
     std::cout << "Form: Copy constructor called" << std::endl;
@@ -74,6 +88,14 @@ bool    Form::isFormSigned(void) const {
     return (_isFormSigned);
 }
 
+/**
+ * If the bureaucrat's grade is lower than the form's grade to sign, throw a
+ * GradeTooLowException. If the form has already been signed, throw a
+ * GradeTooHighException. Otherwise, set the form's signed status to true and
+ * print a message
+ * 
+ * @param b The bureaucrat that is signing the form
+ */
 void    Form::beSigned(const Bureaucrat& b) {
     if (b.getGrade() > _gradeToSign)
         throw GradeTooLowException(b.getName() + EXCEPTION_MSG);

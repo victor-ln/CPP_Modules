@@ -35,6 +35,12 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(
     return (*this);
 }
 
+/**
+ * If the form is signed and the bureaucrat's grade is high enough, the bureaucrat
+ * executes the form and the target is pardoned
+ * 
+ * @param b The bureaucrat who is executing the form.
+ */
 void    PresidentialPardonForm::execute(const Bureaucrat& b) const {
     if (!this->isFormSigned())
         throw GradeTooLowException(EXCEPTION_SIGN_MSG);

@@ -74,6 +74,14 @@ bool    Form::isFormSigned(void) const {
     return (_isFormSigned);
 }
 
+/**
+ * If the bureaucrat's grade is lower than the form's grade to sign, throw a
+ * GradeTooLowException. If the form has already been signed, throw a
+ * GradeTooHighException. Otherwise, set the form's signed status to true and
+ * print a message
+ * 
+ * @param b The bureaucrat that is signing the form
+ */
 void    Form::beSigned(const Bureaucrat& b) {
     if (b.getGrade() > _gradeToSign)
         throw GradeTooLowException(b.getName() + EXCEPTION_MSG);

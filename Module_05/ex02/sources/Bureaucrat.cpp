@@ -85,6 +85,11 @@ int     Bureaucrat::getGrade(void) const {
     return (_grade);
 }
 
+/**
+ * It tries to sign the form, and if it fails, it prints out the reason why
+ * 
+ * @param form The form to sign
+ */
 void    Bureaucrat::signForm(Form* form) {
     try {
         form->beSigned(*this);
@@ -95,6 +100,11 @@ void    Bureaucrat::signForm(Form* form) {
     }
 }
 
+/**
+ * It executes the form if it's signed, otherwise it throws an exception
+ * 
+ * @param form The form to execute.
+ */
 void    Bureaucrat::executeForm(const Form& form) const {
     try {
         form.execute(*this);

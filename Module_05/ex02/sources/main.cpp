@@ -38,5 +38,9 @@ int main(void) {
     std::cout << '\n';
     a.executeForm(*rrForm);
     std::cout << '\n';
+    delete ppForm;
+    delete rrForm;
+    delete scForm1;
+    delete scForm2;
     return (0);
 }

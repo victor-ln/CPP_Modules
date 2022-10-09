@@ -10,6 +10,17 @@
 
 class AMateria;
 
+/**
+ * 
+ * Interface:
+ * 
+ * Interfaces work similarly to abstract classes, they also cannot be
+ * instantiated, the difference is that interfaces cannot have attributes,
+ * they are just a way to define all implementations (pure methods).
+ * Conventionally, we mark an 'I' prefix preceding an interface name.
+ * 
+*/
+
 class ICharacter {
  public:
     virtual ~ICharacter(void) {}

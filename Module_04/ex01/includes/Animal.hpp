@@ -6,9 +6,24 @@
 #include <iostream>
 #include <string>
 
-/*
-    As a guideline, when having a virtual function in a class,
-    you must add a virtual destructor too (even if it does nothing).
+/**
+ * 
+ * Virtual functions:
+ * 
+ * A virtual member function will be called a method.
+ * A method is a member function whose resolution will be dynamic.
+ * 
+*/
+
+/**
+ * 
+ * Virtual destructor:
+ * 
+ * Making base class destructor virtual guarantees 
+ * that the object of derived class is destructed properly.
+ * As a guideline, when having a virtual function in a class,
+ * you must add a virtual destructor too (even if it does nothing).
+ * 
 */
 
 class Animal {

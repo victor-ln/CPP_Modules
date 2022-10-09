@@ -1,7 +1,7 @@
 /* Copyright © 2022 Victor Nunes, Licensed under the MIT License. */
 
-#ifndef MODULE_05_EX03_INCLUDES_BUREAUCRAT_HPP_
-#define MODULE_05_EX03_INCLUDES_BUREAUCRAT_HPP_
+#ifndef MODULE_05_EX02_INCLUDES_BUREAUCRAT_HPP_
+#define MODULE_05_EX02_INCLUDES_BUREAUCRAT_HPP_
 
 #include <exception>
 #include <iostream>
@@ -44,4 +44,4 @@ class Bureaucrat {
 
 std::ostream&    operator<<(std::ostream&, Bureaucrat&);
 
-#endif /* MODULE_05_EX03_INCLUDES_BUREAUCRAT_HPP_ */
+#endif /* MODULE_05_EX02_INCLUDES_BUREAUCRAT_HPP_ */

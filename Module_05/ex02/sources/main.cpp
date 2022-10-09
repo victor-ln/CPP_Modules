@@ -8,35 +8,35 @@
 
 int main(void) {
     Bureaucrat  a("Foo", 130);
-    Form        *presidentialPardonForm = new PresidentialPardonForm("Bob");
-    Form        *robotomyRequestForm = new RobotomyRequestForm("Arnold");
-    ShrubberyCreationForm        *shrubberyForm = new ShrubberyCreationForm("forest");
-    Form        *shrubberyForm2 = new ShrubberyCreationForm(*shrubberyForm);
+    Form        *ppForm = new PresidentialPardonForm("Bob");
+    Form        *rrForm = new RobotomyRequestForm("Arnold");
+    ShrubberyCreationForm *scForm1 = new ShrubberyCreationForm("forest");
+    Form        *scForm2 = new ShrubberyCreationForm(*scForm1);
 
     std::cout << "\n\tBureaucrat signing forms\n\n";
-    a.signForm(shrubberyForm);
-    a.executeForm(*shrubberyForm);
-    std::cout << *shrubberyForm << std::endl;
-    std::cout << *shrubberyForm2 << std::endl;
+    a.signForm(scForm1);
+    a.executeForm(*scForm1);
+    std::cout << *scForm1 << std::endl;
+    std::cout << *scForm2 << std::endl;
     std::cout << '\n';
-    a.signForm(presidentialPardonForm);
+    a.signForm(ppForm);
     std::cout << a << "\n";
-    while (presidentialPardonForm->getGradeToSign() < a.getGrade())
+    while (ppForm->getGradeToSign() < a.getGrade())
         ++a;
     Bureaucrat  b = a;
     std::cout << b << "\n";
     std::cout << '\n';
-    a.signForm(presidentialPardonForm);
+    a.signForm(ppForm);
     std::cout << '\n';
-    a.executeForm(*presidentialPardonForm);
-    while (presidentialPardonForm->getGradeToExecute() < a.getGrade())
+    a.executeForm(*ppForm);
+    while (ppForm->getGradeToExecute() < a.getGrade())
         ++a;
     std::cout << '\n';
-    a.executeForm(*presidentialPardonForm);
+    a.executeForm(*ppForm);
     std::cout << '\n';
-    a.signForm(robotomyRequestForm);
+    a.signForm(rrForm);
     std::cout << '\n';
-    a.executeForm(*robotomyRequestForm);
+    a.executeForm(*rrForm);
     std::cout << '\n';
     return (0);
 }

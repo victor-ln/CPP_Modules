@@ -1,7 +1,7 @@
 /* Copyright © 2022 Victor Nunes, Licensed under the MIT License. */
 
-#ifndef MODULE_05_EX03_INCLUDES_PRESIDENTIALPARDONFORM_HPP_
-#define MODULE_05_EX03_INCLUDES_PRESIDENTIALPARDONFORM_HPP_
+#ifndef MODULE_05_EX02_INCLUDES_PRESIDENTIALPARDONFORM_HPP_
+#define MODULE_05_EX02_INCLUDES_PRESIDENTIALPARDONFORM_HPP_
 
 #include <iostream>
 #include <string>
@@ -23,4 +23,4 @@ class PresidentialPardonForm : public Form {
     std::string      _target;
 };
 
-#endif /* MODULE_05_EX03_INCLUDES_PRESIDENTIALPARDONFORM_HPP_ */
+#endif /* MODULE_05_EX02_INCLUDES_PRESIDENTIALPARDONFORM_HPP_ */

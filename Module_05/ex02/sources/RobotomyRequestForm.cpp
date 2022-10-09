@@ -2,7 +2,7 @@
 
 #include "../includes/RobotomyRequestForm.hpp"
 
-#define EXCEPTION_EXEC_MSG "’s grade is too low to execute it. The robotomy failed."
+#define EXCEPT_EXE_MSG "’s grade is too low to execute it. The robotomy failed."
 #define EXCEPTION_SIGN_MSG "form is not signed yet."
 #define SUCCESS_MSG " has been robotomized successfully 50% of the time"
 
@@ -36,8 +36,8 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(
 }
 
 /**
- * If the form is signed and the bureaucrat's grade is high enough, the bureaucrat
- * executes the form and prints a success message
+ * If the form is signed and the bureaucrat's grade is high enough, the 
+ * bureaucrat executes the form and prints a success message.
  * 
  * @param b The bureaucrat that is executing the form.
  */
@@ -45,7 +45,7 @@ void    RobotomyRequestForm::execute(const Bureaucrat& b) const {
     if (!this->isFormSigned())
         throw GradeTooLowException(EXCEPTION_SIGN_MSG);
     if (b.getGrade() > this->getGradeToExecute())
-        throw GradeTooLowException(b.getName() + EXCEPTION_EXEC_MSG);
+        throw GradeTooLowException(b.getName() + EXCEPT_EXE_MSG);
     std::cout << b.getName() << " executed " << this->getName() << std::endl;
     std::cout << _target << SUCCESS_MSG << std::endl;
 }

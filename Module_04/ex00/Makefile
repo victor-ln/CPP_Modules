@@ -24,7 +24,7 @@ ifndef ECHO
 	T := $(shell $(MAKE) $(MAKECMDGOALS) -n ECHO="counter" | grep -c "counter")
 endif
 
-ifeq ($T, 0)
+ifeq ($(firstword $(MAKECMDGOALS)), $(shell echo re))
 	T := $(shell expr $(words $(FILES)) + 1)
 endif
 

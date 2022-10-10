@@ -24,10 +24,11 @@ ifeq ($T, 0)
 	T := $(shell expr $(words $(FILES)) + 1)
 endif
 
+PRINT	:=	$(shell which echo)
 N := x
 C = $(words $(N))$(eval N := x $(N))
 P = "`expr $(C) '*' 100 / $(T)`"
-ECHO = echo -e $(ITALIC_BOLD_GREEN)"[$(P)%]\t"
+ECHO = $(PRINT) -e $(ITALIC_BOLD_GREEN)"[$(P)%]\t"
 
 all:		$(NAME)
 
@@ -44,11 +45,11 @@ $(OBJ_DIR):
 
 clean:
 	@rm -fr $(OBJ_DIR)
-	@echo -e $(ITALIC_LIGHTER_YELLOW)"Objects deleted"$(RESET_COLOR)
+	@$(PRINT) -e $(ITALIC_LIGHTER_YELLOW)"Objects deleted"$(RESET_COLOR)
 
 fclean:		clean
 	@rm -fr $(NAME)
-	@echo -e $(ITALIC_LIGHTER_YELLOW)$(NAME)" deleted"$(RESET_COLOR)
+	@$(PRINT) -e $(ITALIC_LIGHTER_YELLOW)$(NAME)" deleted"$(RESET_COLOR)
 
 re:			fclean all
 

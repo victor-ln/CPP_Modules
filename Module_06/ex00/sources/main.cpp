@@ -27,7 +27,7 @@ int main(int argc, char const *argv[]) {
 void getFloatsPrecisions(scalarTypes *allTypes, const char *argv) {
     const char *point = strchr(argv, '.');
 
-    allTypes->dblPrecision = strlen(argv);
+    allTypes->dblPrecision = strlen(argv) + 2;
     allTypes->fltPrecision = allTypes->dblPrecision;
     allTypes->isFloating = point != NULL;
     if (allTypes->isFloating) {

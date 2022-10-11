@@ -1,3 +1,5 @@
+/* Copyright © 2022 Victor Nunes, Licensed under the MIT License. */
+
 #include "../includes/A.hpp"
 #include "../includes/Base.hpp"
 #include "../includes/B.hpp"
@@ -39,13 +41,13 @@ int main(void) {
 Base* generate(void) {
     switch (rand() % 3) {
         case 0:
-            srand((unsigned long)time(NULL));
+            srand((unsigned int)time(NULL));
             return (new A);
         case 1:
-            srand((unsigned long)time(NULL));
+            srand((unsigned int)time(NULL));
             return (new B);
         case 2:
-            srand((unsigned long)time(NULL));
+            srand((unsigned int)time(NULL));
             return (new C);
     }
     return (0);

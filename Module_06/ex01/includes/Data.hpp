@@ -6,7 +6,7 @@
 #include <stdint.h>
 
 struct Data {
-    long   value;
+    int64_t   value;
 };
 
 uintptr_t   serialize(Data* ptr);

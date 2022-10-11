@@ -1,7 +1,7 @@
 /* Copyright © 2022 Victor Nunes, Licensed under the MIT License. */
 
-#ifndef MODULE_07_EX00_INCLUDES_ITER_HPP_
-#define MODULE_07_EX00_INCLUDES_ITER_HPP_
+#ifndef MODULE_07_EX01_INCLUDES_ITER_HPP_
+#define MODULE_07_EX01_INCLUDES_ITER_HPP_
 
 #include <iostream>
 
@@ -13,4 +13,4 @@ void iter(T *address, size_t end, function func) {
     }
 }
 
-#endif /* MODULE_07_EX00_INCLUDES_ITER_HPP_ */
+#endif /* MODULE_07_EX01_INCLUDES_ITER_HPP_ */

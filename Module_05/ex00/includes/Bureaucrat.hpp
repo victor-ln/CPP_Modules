@@ -26,7 +26,6 @@ class Bureaucrat {
 
     std::string     getName(void) const;
     int             getGrade(void) const;
-    void            setGrade(int);
 
     Bureaucrat&     operator=(const Bureaucrat&);
     Bureaucrat&     operator++(void);

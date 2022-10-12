@@ -30,7 +30,6 @@ class Bureaucrat {
 
     std::string     getName(void) const;
     int             getGrade(void) const;
-    void            setGrade(int);
     void            signForm(Form*);
 
     Bureaucrat&     operator=(const Bureaucrat&);

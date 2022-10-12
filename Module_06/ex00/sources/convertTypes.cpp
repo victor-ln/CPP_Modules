@@ -6,6 +6,8 @@ static e_types impossibleConversion(const std::string& s, scalarTypes *t);
 static e_types getActualType(const std::string& s, scalarTypes *t);
 static e_types nbConversion(const std::string& s, scalarTypes *t);
 
+const std::size_t   nFound = std::string::npos;
+
 void    convertTypes(scalarTypes *t, const char *argv) {
     switch (getActualType(argv, t)) {
         case character:
@@ -27,10 +29,9 @@ void    convertTypes(scalarTypes *t, const char *argv) {
 }
 
 static e_types getActualType(const std::string& s, scalarTypes *t) {
-    if (s.find("nan") != std::string::npos || \
-        s.find("inf") != std::string::npos)
+    if (s.find("nan") != nFound || s.find("inf") != nFound)
         return (impossibleConversion(s, t));
-    if (s.find_first_of("0123456789") != std::string::npos)
+    if (s.find_first_of("0123456789") != nFound)
         return (nbConversion(s, t));
     if (s.length() > 1)
         return (invalid);
@@ -40,8 +41,7 @@ static e_types getActualType(const std::string& s, scalarTypes *t) {
 
 static e_types impossibleConversion(const std::string& s, scalarTypes *t) {
     t->isImpossibleNb = true;
-    if (s.find("nanf") != std::string::npos || \
-        s.find("inff") != std::string::npos) {
+    if (s.find("nanf") != nFound || s.find("inff") != nFound) {
         t->floating = static_cast<float>(atof(s.c_str()));
         return (floating);
     }
@@ -50,10 +50,13 @@ static e_types impossibleConversion(const std::string& s, scalarTypes *t) {
 }
 
 static e_types nbConversion(const std::string& s, scalarTypes *t) {
-    if (s.find_first_not_of("0123456789.f") != std::string::npos) {
+    if (s.find_first_not_of("-0123456789.f") != nFound)
         return (invalid);
-    } else if (s.find_first_of(".") != std::string::npos) {
-        if (s.find_first_of("f") != std::string::npos) {
+    if (s.find_last_of('-') > s.find_first_of("0123456789") && \
+        s.find_last_of('-') != nFound)
+        return (invalid);
+    if (s.find_first_of(".") != nFound) {
+        if (s.find_first_of("f") != nFound) {
             t->floating = static_cast<float>(atof(s.c_str()));
             return (floating);
         }

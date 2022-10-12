@@ -10,7 +10,6 @@ int main(void) {
 
     std::cout << "a:\t" << a.value << '\n';
     std::cout << "b:\t" << b->value << '\n';
-    delete b;
     return (0);
 }
 
@@ -19,9 +18,5 @@ uintptr_t   serialize(Data* ptr) {
 }
 
 Data*       deserialize(uintptr_t raw) {
-    Data    *tmp = reinterpret_cast<Data *>(raw);
-    Data    *ret = new Data;
-
-    ret->value = tmp->value;
-    return (ret);
+    return (reinterpret_cast<Data *>(raw));
 }

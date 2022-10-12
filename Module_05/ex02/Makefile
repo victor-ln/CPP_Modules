@@ -49,6 +49,7 @@ $(OBJ_DIR):
 
 clean:
 	@rm -fr $(OBJ_DIR)
+	@rm -fr *_shrubbery
 	@$(PRINT) $(ITALIC_LIGHTER_YELLOW)"Objects deleted"$(RESET_COLOR)
 
 fclean:		clean

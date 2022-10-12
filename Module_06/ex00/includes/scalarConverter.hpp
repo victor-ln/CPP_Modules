@@ -30,13 +30,6 @@ struct scalarTypes {
 };
 
 template<typename T>
-bool isImpossible(T number) {
-    return (number != number || \
-        std::numeric_limits<T>::infinity() == number || \
-        -std::numeric_limits<T>::infinity() == number);
-}
-
-template<typename T>
 void convertToOtherTypes(T value, scalarTypes *types) {
     types->character = static_cast<char>(value);
     types->integer = static_cast<int>(value);

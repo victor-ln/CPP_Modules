@@ -41,12 +41,15 @@ static e_types getActualType(const std::string& s, scalarTypes *t) {
 
 static e_types impossibleConversion(const std::string& s, scalarTypes *t) {
     t->isImpossibleNb = true;
-    if (s.find("nanf") != nFound || s.find("inff") != nFound) {
+    if (s == "nan" || s == "inf") {
+        t->lFloating = atof(s.c_str());
+        return (lFloating);
+    }
+    if (s == "nanf" || s == "inff") {
         t->floating = static_cast<float>(atof(s.c_str()));
         return (floating);
     }
-    t->lFloating = atof(s.c_str());
-    return (lFloating);
+    return (invalid);
 }
 
 static e_types nbConversion(const std::string& s, scalarTypes *t) {

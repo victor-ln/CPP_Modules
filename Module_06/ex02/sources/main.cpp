@@ -38,16 +38,22 @@ int main(void) {
     return (0);
 }
 
+unsigned int ft_rand(void) {
+    static unsigned int     lfsr = (unsigned int)time(NULL);
+    unsigned int            bit;
+
+    bit = ((lfsr >> 0) ^ (lfsr >> 2) ^ (lfsr >> 3) ^ (lfsr >> 5)) & 1;
+    lfsr = (lfsr >> 1) | (bit << 15);
+    return (lfsr);
+}
+
 Base* generate(void) {
-    switch (rand() % 3) {
+    switch (ft_rand() % 3) {
         case 0:
-            srand((unsigned int)time(NULL));
             return (new A);
         case 1:
-            srand((unsigned int)time(NULL));
             return (new B);
         case 2:
-            srand((unsigned int)time(NULL));
             return (new C);
     }
     return (0);

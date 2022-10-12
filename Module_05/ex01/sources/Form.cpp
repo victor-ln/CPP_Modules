@@ -2,7 +2,10 @@
 
 #include "../includes/Form.hpp"
 
-#define EXCEPTION_MSG "’s grade is too low to sign it."
+#define EXCEPTION_SIGN_MSG "’s grade is too low to sign it."
+
+#define EXCEPTION_HIGH_MSG "Exception: Grade too high"
+#define EXCEPTION_LOW_MSG "Exception: Grade too low"
 
 Form::Form(void) : _name("Default"), _gradeToSign(100), _gradeToExecute(100) {
     std::cout << "Form: Default constructor called" << std::endl;
@@ -19,6 +22,10 @@ Form::Form(void) : _name("Default"), _gradeToSign(100), _gradeToExecute(100) {
  */
 Form::Form(const std::string& name, const int gradeSign, const int gradeExec) :
         _name(name), _gradeToSign(gradeSign), _gradeToExecute(gradeExec) {
+    if (_gradeToExecute <= 0 || _gradeToSign <= 0)
+        throw GradeTooHighException(EXCEPTION_HIGH_MSG);
+    if (_gradeToExecute > 150 || _gradeToSign > 150)
+        throw GradeTooLowException(EXCEPTION_LOW_MSG);
     std::cout << "Form: Params constructor called" << std::endl;
     this->_isFormSigned = false;
 }
@@ -98,7 +105,7 @@ bool    Form::isFormSigned(void) const {
  */
 void    Form::beSigned(const Bureaucrat& b) {
     if (b.getGrade() > _gradeToSign)
-        throw GradeTooLowException(b.getName() + EXCEPTION_MSG);
+        throw GradeTooLowException(b.getName() + EXCEPTION_SIGN_MSG);
     if (_isFormSigned)
         throw GradeTooHighException("Form has already been signed");
     _isFormSigned = true;

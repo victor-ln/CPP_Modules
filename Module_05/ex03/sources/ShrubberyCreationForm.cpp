@@ -18,7 +18,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) :
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& rhs) :
         Form(rhs), _target(rhs._target) {
-    std::cout << "PresidentialForm: Copy Constructor called" << std::endl;
+    std::cout << "ShrubberyForm: Copy Constructor called" << std::endl;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm(void) {

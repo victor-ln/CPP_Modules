@@ -19,7 +19,7 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string& target) :
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& rhs) :
         Form(rhs), _target(rhs._target) {
-    std::cout << "PresidentialForm: Copy Constructor called" << std::endl;
+    std::cout << "RobotomyForm: Copy Constructor called" << std::endl;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm(void) {

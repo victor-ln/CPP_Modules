@@ -1,6 +1,6 @@
 /* Copyright © 2022 Victor Nunes, Licensed under the MIT License. */
 
-#include "../includes/Array.hpp"
+#include "./Array.hpp"
 
 template <typename T>
 Array<T>::Array(void) : _arrayLength(0), _array(0) {

@@ -1,15 +1,13 @@
 /* Copyright © 2022 Victor Nunes, Licensed under the MIT License. */
 
-#ifndef MODULE_07_EX01_INCLUDES_ITER_HPP_
-#define MODULE_07_EX01_INCLUDES_ITER_HPP_
-
-#include <iostream>
+#ifndef MODULE_07_EX02_INCLUDES_ARRAY_HPP_
+#define MODULE_07_EX02_INCLUDES_ARRAY_HPP_
 
 template<typename T>
 class Array {
  public:
     Array(void);
-    Array(unsigned int n);
+    explicit Array(unsigned int n);
     Array(const Array&);
     ~Array(void);
 
@@ -29,4 +27,4 @@ class Array {
 
 #include "./Array.tpp"
 
-#endif /* MODULE_07_EX01_INCLUDES_ITER_HPP_ */
+#endif /* MODULE_07_EX02_INCLUDES_ARRAY_HPP_ */

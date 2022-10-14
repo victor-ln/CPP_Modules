@@ -21,6 +21,10 @@ class Array {
  private:
     unsigned int     _arrayLength;
     T               *_array;
+
+    class InvalidAccess : public std::exception {
+      const char *what(void) const throw();
+    };
 };
 
 #include "./Array.tpp"

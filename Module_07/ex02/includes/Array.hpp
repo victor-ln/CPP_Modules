@@ -12,7 +12,8 @@ class Array {
     ~Array(void);
 
     Array&           operator=(const Array&);
-    T&               operator[](const unsigned int) const;
+    T&               operator[](const unsigned int);
+    const T&         operator[](const unsigned int) const;
 
     unsigned int      size(void) const;
 

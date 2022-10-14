@@ -17,7 +17,7 @@ Array<T>::Array(unsigned int n) : _arrayLength(n) {
 }
 
 template <typename T>
-Array<T>::Array(const Array& src) {
+Array<T>::Array(const Array& src) : _arrayLength(0), _array(0) {
     *this = src;
 }
 
@@ -32,10 +32,12 @@ template <typename T>
 Array<T>& Array<T>::operator=(const Array& rhs) {
     if (this->_array)
         delete [] this->_array;
-    this->_array = new T[rhs._arrayLength];
-    for (unsigned int i = 0; i < rhs._arrayLength; i++)
-        this->_array[i] = rhs._array[i];
     this->_arrayLength = rhs._arrayLength;
+    if (this->_arrayLength) {
+        this->_array = new T[this->_arrayLength];
+        for (unsigned int i = 0; i < this->_arrayLength; i++)
+            this->_array[i] = rhs._array[i];
+    }
     return (*this);
 }
 
@@ -46,7 +48,20 @@ Array<T>& Array<T>::operator=(const Array& rhs) {
  * @return A reference to the element at the given index.
  */
 template <typename T>
-T& Array<T>::operator[](const unsigned int idx) const {
+T& Array<T>::operator[](const unsigned int idx) {
+    if (idx >= this->_arrayLength)
+        throw InvalidAccess();
+    return *(this->_array + idx);
+}
+
+/**
+ * If the index is out of bounds, throw an exception,
+ * otherwise return the value at the index.
+ * 
+ * @return A const reference to the element at the given index.
+ */
+template <typename T>
+const T& Array<T>::operator[](const unsigned int idx) const {
     if (idx >= this->_arrayLength)
         throw InvalidAccess();
     return *(this->_array + idx);

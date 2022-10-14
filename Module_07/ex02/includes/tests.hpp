@@ -8,16 +8,19 @@
 #define MAX_VAL     750
 #define MAX_STRS    5
 
-static void     initIntArray(Array<int>* numbers, int *nbMirror);
+void     initIntArray(Array<int>* numbers, int *nbMirror);
 
 template<typename T>
-static void    testIfIsInitialized(const Array<T>& array);
+void    testIfIsInitialized(const Array<T>& array);
 
 template<typename T>
-static void    testInvalidAccess(const Array<T>& array);
+void    testInvalidAccess(const Array<T>& array);
 
 template<typename T>
-static void    testIsDeepCopying(const Array<T>& array);
+void    testIsDeepCopying(const Array<T>& array);
 
 template<typename T>
-static bool    testIfValuesAreTheSame(const Array<T>& array, T* srcArray);
+bool    testIfValuesAreTheSame(const Array<T>& array, T* srcArray);
+
+template<typename T>
+void    testEmptyArray(T value);

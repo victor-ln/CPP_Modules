@@ -8,7 +8,7 @@
 #define MAX_VAL     750
 #define MAX_STRS    5
 
-static void     initIntArray(Array<int>& numbers, int *nbMirror);
+static void     initIntArray(Array<int>* numbers, int *nbMirror);
 
 template<typename T>
 static void    testIfIsInitialized(const Array<T>& array);
@@ -32,7 +32,7 @@ int main(void) {
 
     testIfIsInitialized(numbers);
     testIfIsInitialized(strings);
-    initIntArray(numbers, nbMirror);
+    initIntArray(&numbers, nbMirror);
     for (int i = 0; i < MAX_STRS; i++)
         strings[i] = sMirror[i];
     if (!testIfValuesAreTheSame<int>(numbers, nbMirror))
@@ -41,8 +41,6 @@ int main(void) {
         std::cout << "didn't save the same value!!\n\n";
     testInvalidAccess(numbers);
     testInvalidAccess(strings);
-    for (int i = 0; i < MAX_VAL; i++)
-        numbers[i] = rand();
     delete [] nbMirror;
     return 0;
 }
@@ -54,12 +52,14 @@ int main(void) {
  * @param nbMirror An array that will be used to check 
  * that all values have been stored correctly.
  */
-static void     initIntArray(Array<int>& numbers, int *nbMirror) {
-    srand(time(NULL));
+static void     initIntArray(Array<int>* numbers, int *nbMirror) {
+    unsigned int    seed = time(NULL);
+    int             value;
+
     for (int i = 0; i < MAX_VAL; i++) {
-        const int value = rand();
-        numbers[i] = value;
+        value = rand_r(&seed);
         nbMirror[i] = value;
+        (*numbers)[i] = value;
     }
 }
 

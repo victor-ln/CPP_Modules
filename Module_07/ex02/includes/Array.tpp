@@ -23,7 +23,8 @@ Array<T>::Array(const Array& src) : _arrayLength(0), _array(0) {
 
 template <typename T>
 Array<T>::~Array(void) {
-    delete [] this->_array;
+    if (_array)
+        delete [] this->_array;
     this->_arrayLength = 0;
     this->_array = 0;
 }

@@ -26,7 +26,7 @@ int main(void) {
     MutantStack<int>::iterator ite = mstack.end();
     ++it;
     --it;
-    std::cout << "\n\tItering elements\n\n";
+    std::cout << "\n\tIterating elements\n\n";
     while (it != ite) {
         std::cout << *it << std::endl;
         ++it;
@@ -35,7 +35,7 @@ int main(void) {
     std::list<int>::iterator iteS = list.end();
     ++itS;
     --itS;
-    std::cout << "\n\tItering elements\n\n";
+    std::cout << "\n\tIterating elements\n\n";
     while (itS != iteS) {
         std::cout << *itS << std::endl;
         ++itS;

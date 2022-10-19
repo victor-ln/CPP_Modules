@@ -87,11 +87,11 @@ Span::Iterator Span::end(void) {
     return Iterator(_lastAdded);
 }
 
-typename Span::Iterator::reference Span::Iterator::operator*(void) {
+Span::Iterator::reference Span::Iterator::operator*(void) {
     return *m_ptr;
 }
 
-typename Span::Iterator::pointer Span::Iterator::operator->(void) {
+Span::Iterator::pointer Span::Iterator::operator->(void) {
     return m_ptr;
 }
 

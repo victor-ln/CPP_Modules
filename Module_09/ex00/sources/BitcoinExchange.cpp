@@ -1,3 +1,5 @@
+/* Copyright © 2023 Victor Nunes, Licensed under the MIT License. */
+
 #include "../includes/BitcoinExchange.hpp"
 
 BitcoinExchange::BitcoinExchange(void) {
@@ -67,7 +69,7 @@ BitcoinExchange::s_input_type    BitcoinExchange::_getDataFromLine(
     s_input_type    ret;
     std::string     date;
     size_t          pipe_pos;
-    long            value_nbr;
+    int64_t         value_nbr;
 
     pipe_pos    = line.find_first_of('|');
     date        = line.substr(0, pipe_pos);

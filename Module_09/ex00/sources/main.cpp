@@ -1,3 +1,5 @@
+/* Copyright © 2023 Victor Nunes, Licensed under the MIT License. */
+
 #include <iostream>
 
 #include "../includes/BitcoinExchange.hpp"

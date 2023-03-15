@@ -7,7 +7,16 @@ BitcoinExchange::BitcoinExchange(void) {
     _end = _quotation.end();
 }
 
+BitcoinExchange::BitcoinExchange(BitcoinExchange& src)
+    : _quotation(src._quotation), _end(src._end) {}
+
 BitcoinExchange::~BitcoinExchange() {}
+
+BitcoinExchange& BitcoinExchange::operator=(BitcoinExchange& src) {
+    _quotation = src._quotation;
+    _end = src._end;
+    return *this;
+}
 
 void    BitcoinExchange::execute(const char *input_filename) {
     std::ifstream   file;

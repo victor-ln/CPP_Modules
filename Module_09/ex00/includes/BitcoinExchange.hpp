@@ -18,9 +18,12 @@
 class BitcoinExchange {
  public:
     BitcoinExchange(void);
+    BitcoinExchange(BitcoinExchange&);
     ~BitcoinExchange();
 
-    void    execute(const char *input_filename);
+    BitcoinExchange& operator=(BitcoinExchange&);
+
+    void            execute(const char *);
 
  private:
     struct s_input_type {
